@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 export class GetmoedasService {
 
 
-moedasUrl="https://api.hgbrasil.com/finance";
+moedasUrl="https://mocki.io/v1/d4867d8b-b5d5-4a48-a4ab-79131b5809b8";
 
 
 
@@ -21,12 +21,19 @@ moedasUrl="https://api.hgbrasil.com/finance";
 
   listar(){
 
-    return this.http.get<any[]>(`${this.moedasUrl}`,{headers:new HttpHeaders({ "Access-Control-Allow-Origin": "*",
+    var ret=this.http.get<any[]>(`${this.moedasUrl}`,{headers:new HttpHeaders({ "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods":"GET,HEAD,OPTIONS,POST,PUT",
-    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization"
+    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization",
+    "Content-Type":"application/json"
   
   })});
+  
 
+  ret.forEach(element => {
+    console.log(element);
+  });
+
+  return ret;
 
   
   }
